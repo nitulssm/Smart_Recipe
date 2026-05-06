@@ -69,7 +69,7 @@ app.post('/api/auth/register', async (req, res) => {
   let emailSent = false;
   try {
     emailSent = await sendEmail({
-      to: key, name: name.trim(), subject: 'Verify your email – Smart Recipe AI', code,
+      to: key, name: name.trim(), subject: 'Verify your email – Smart Recipe', code,
       bodyTitle: 'Verify your email',
       bodyIntro: 'enter the code below to activate your account.',
     });
@@ -167,7 +167,7 @@ async function sendEmail({ to, name, subject, code, bodyTitle, bodyIntro }) {
     <div style="font-family:sans-serif;max-width:480px;margin:auto;padding:32px;background:#f9fafb;border-radius:12px">
       <div style="text-align:center;margin-bottom:24px">
         <div style="display:inline-block;background:#16a34a;color:#fff;border-radius:10px;padding:10px 18px;font-size:1.1rem;font-weight:800">
-          🌿 Smart Recipe AI
+          🌿 Smart Recipe
         </div>
       </div>
       <h2 style="color:#111827;margin-bottom:8px">${bodyTitle}</h2>
@@ -185,7 +185,7 @@ async function sendEmail({ to, name, subject, code, bodyTitle, bodyIntro }) {
       method: 'POST',
       headers: { 'api-key': process.env.BREVO_API_KEY, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        sender: { name: 'Smart Recipe AI', email: process.env.BREVO_USER },
+        sender: { name: 'Smart Recipe', email: process.env.BREVO_USER },
         to: [{ email: to }],
         subject,
         htmlContent: html,
@@ -198,18 +198,18 @@ async function sendEmail({ to, name, subject, code, bodyTitle, bodyIntro }) {
 
   const brevo = getBrevoTransport();
   if (brevo) {
-    await brevo.sendMail({ from: `"Smart Recipe AI" <${fromAddr}>`, to, subject, html });
+    await brevo.sendMail({ from: `"Smart Recipe" <${fromAddr}>`, to, subject, html });
     return true;
   }
 
   const gmail = getGmailTransport();
   if (gmail) {
-    await gmail.sendMail({ from: `"Smart Recipe AI" <${process.env.EMAIL_USER}>`, to, subject, html });
+    await gmail.sendMail({ from: `"Smart Recipe" <${process.env.EMAIL_USER}>`, to, subject, html });
     return true;
   }
 
   if (resend) {
-    await resend.emails.send({ from: 'Smart Recipe AI <onboarding@resend.dev>', to, subject, html });
+    await resend.emails.send({ from: 'Smart Recipe <onboarding@resend.dev>', to, subject, html });
     return true;
   }
 
@@ -239,7 +239,7 @@ app.post('/api/auth/forgot-password', async (req, res) => {
   let emailSent = false;
   try {
     emailSent = await sendEmail({
-      to: found.email, name: found.name, subject: 'Your Password Reset Code – Smart Recipe AI', code,
+      to: found.email, name: found.name, subject: 'Your Password Reset Code – Smart Recipe', code,
       bodyTitle: 'Password Reset Code',
       bodyIntro: 'use the code below to reset your password.',
     });

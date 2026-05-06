@@ -1,4 +1,4 @@
-# Smart Recipe AI — Technical Documentation
+# Smart Recipe — Technical Documentation
 
 > **Related document:** [ARCHITECTURE.md](ARCHITECTURE.md) — system architecture diagrams, data flow, and infrastructure overview.
 
@@ -25,7 +25,7 @@
 
 ## 1. Project Overview
 
-Smart Recipe AI is a full-stack web application that lets users photograph the inside of their fridge, automatically detects the ingredients using AI vision, and instantly generates personalized recipe suggestions. Users can save recipes, track viewed recipes, and manage their profile — all tied to individual accounts persisted in a **PostgreSQL database**.
+Smart Recipe is a full-stack web application that lets users photograph the inside of their fridge, automatically detects the ingredients using AI vision, and instantly generates personalized recipe suggestions. Users can save recipes, track viewed recipes, and manage their profile — all tied to individual accounts persisted in a **PostgreSQL database**.
 
 **Core capabilities:**
 - AI-powered ingredient detection from fridge photos
